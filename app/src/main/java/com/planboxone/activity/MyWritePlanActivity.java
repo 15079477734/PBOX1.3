@@ -77,6 +77,7 @@ public class MyWritePlanActivity extends BaseActivity {
         Log.e(TAG, mDataValues.toString());
         if (saveData())
             return super.onKeyDown(keyCode, event);
+
         else return false;
     }
 

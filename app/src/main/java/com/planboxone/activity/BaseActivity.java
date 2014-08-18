@@ -33,16 +33,16 @@ public class BaseActivity extends FragmentActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
-            overridePendingTransition(R.anim.zoin, R.anim.slide_out_right);
-            finish();;
+            finish();
+            overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
             return true;
         }
         return super.onOptionsItemSelected(item);
     }
 
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-        overridePendingTransition(R.anim.zoin, R.anim.slide_out_right);
         finish();
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
         return super.onKeyDown(keyCode, event);
 
     }
