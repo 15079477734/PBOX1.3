@@ -8,7 +8,7 @@
     android:orientation="vertical">
 
     <RadioGroup
-        android:id="@+id/class_radiogroup"
+        android:id="@+id/category_rdogp"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
@@ -16,16 +16,16 @@
 
         <RadioButton
             style="@style/radiobutton_style_one"
-            android:text="学习" />
+            android:text="A计划" />
 
         <RadioButton
             style="@style/radiobutton_style_one"
-            android:text="工作" />
+            android:text="B计划" />
 
 
         <RadioButton
             style="@style/radiobutton_style_one"
-            android:text="生活" />
+            android:text="C计划" />
 
 
     </RadioGroup>

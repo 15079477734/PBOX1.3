@@ -1,5 +1,6 @@
 package com.planboxone.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.KeyEvent;
@@ -32,16 +33,16 @@ public class BaseActivity extends FragmentActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
-            finish();
             overridePendingTransition(R.anim.zoin, R.anim.slide_out_right);
+            finish();;
             return true;
         }
         return super.onOptionsItemSelected(item);
     }
 
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-        finish();
         overridePendingTransition(R.anim.zoin, R.anim.slide_out_right);
+        finish();
         return super.onKeyDown(keyCode, event);
 
     }

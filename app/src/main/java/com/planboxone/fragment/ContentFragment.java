@@ -25,7 +25,7 @@ import android.widget.Toast;
 import com.library.listviewanimations.swinginadapters.AnimationAdapter;
 import com.library.listviewanimations.swinginadapters.prepared.ScaleInAnimationAdapter;
 import com.planboxone.R;
-import com.planboxone.activity.WritePlanActivity;
+import com.planboxone.activity.MyWritePlanActivity;
 import com.planboxone.util.Calculator;
 import com.planboxone.util.DatabaseManage;
 import com.planboxone.util.MemoryCache;
@@ -54,7 +54,7 @@ public class ContentFragment extends Fragment {
     private ArrayList<String> mIDs;
     private ListView mListView;
     private List<Map<String, String>> mPlanData;
-    private BaseAdapter mAdapter;
+    private MyAdapter mAdapter;
 
     private String mDbName;
     private int mNewsType = 0;
@@ -131,10 +131,9 @@ public class ContentFragment extends Fragment {
                     public void onClick(View view) {
                         alertDialog.dismiss();
                         sortData();
+                        mAdapter.setData(mPlanData);
                         Log.e(TAG, "mPlanData after change  : " + mPlanData.toString());
                         mAdapter.notifyDataSetChanged();
-
-                        //    refresh();
                     }
                 });
                 alertDialog.show();
@@ -158,7 +157,7 @@ public class ContentFragment extends Fragment {
 
     public void editPlan(int position) {
         Map<String, String> str = mDatabaseManage.findData("_id = ?", new String[]{mIDs.get(position)});
-        Intent intent = new Intent(getActivity(), WritePlanActivity.class);
+        Intent intent = new Intent(getActivity(), MyWritePlanActivity.class);
         intent.putExtra("_id", str.get("_id"));
         intent.putExtra("dbName", mDbName);
         getActivity().startActivity(intent);
@@ -225,6 +224,14 @@ public class ContentFragment extends Fragment {
         public MyAdapter(Context context, List<Map<String, String>> list) {
             mContext = context;
             this.mData = list;
+        }
+
+        public void setData(List<Map<String, String>> data) {
+            this.mData = data;
+        }
+
+        public List<Map<String, String>> getData() {
+            return mData;
         }
 
         @Override

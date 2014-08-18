@@ -110,8 +110,8 @@ public class MainActivity extends FragmentActivity {
         int id = item.getItemId();
         if (id == R.id.action_plus
                 ) {
-            this.startActivity(new Intent(this,WritePlanActivity.class));
-            overridePendingTransition(R.anim.slide_in_right, R.anim.zoin);
+            this.startActivity(new Intent(this,MyWritePlanActivity.class));
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             return true;
         }
 

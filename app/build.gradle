@@ -23,6 +23,7 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.android.support:appcompat-v7:20.0.0'
     compile 'com.nineoldandroids:library:2.4.0'
+    compile 'com.google.dexmaker:dexmaker-mockito:1.0'
     compile files('/Users/shikeim01/Desktop/studiospace/PBOX1.3/libs/channelopenauth.jar')
     compile files('/Users/shikeim01/Desktop/studiospace/PBOX1.3/libs/kscopenapi_sdk.jar')
     compile files('/Users/shikeim01/Desktop/studiospace/PBOX1.3/libs/tencent_open_sdk.jar')

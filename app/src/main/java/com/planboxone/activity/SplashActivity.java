@@ -33,10 +33,10 @@ public class SplashActivity extends Activity {
         Boolean mIsFirstEnter = IsFirstEnter(SplashActivity.this, SplashActivity.this.getClass().getName());
 
         if (mIsFirstEnter) {
-            mHandler.sendEmptyMessageDelayed(GUIDE_ACTIVITY, 2000);//5000是延迟的时间5秒
+            mHandler.sendEmptyMessageDelayed(GUIDE_ACTIVITY, 1000);
 
         } else {
-            mHandler.sendEmptyMessageDelayed(MAIN_ACTIVITY, 2000);
+            mHandler.sendEmptyMessageDelayed(MAIN_ACTIVITY, 1000);
         }
     }
 
