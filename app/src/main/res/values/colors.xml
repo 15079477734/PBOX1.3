@@ -109,6 +109,7 @@
     <color name="pathbg2">#d0c3b7</color>
     <!--   csdn-->
 
+    <!-- GoogleDateTimePicker-->
     <color name="circle_background">#f2f2f2</color>
     <color name="ampm_text_color">#8c8c8c</color>
     <color name="done_text_color_normal">#333333</color>
@@ -118,9 +119,10 @@
     <color name="darker_blue">#0099CC</color>
     <color name="date_picker_text_normal">#FF999999</color>
     <color name="calendar_header">#999999</color>
-
     <color name="line_background">#cccccc</color>
     <color name="date_picker_view_animator">#f2f2f2</color>
     <color name="calendar_selected_date_text">#FFD1D2D4</color>
     <color name="background_tab_pressed">#6633B5E5</color>
+
+    <!-- GoogleDateTimePicker-->
 </resources>

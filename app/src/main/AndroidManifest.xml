@@ -12,10 +12,7 @@
             android:name=".activity.MainActivity"
             android:label="微计划"
             android:theme="@style/AppTheme" />
-        <activity
-            android:name=".activity.WritePlanActivity"
-            android:label="写计划"
-            android:theme="@style/AppTheme" />
+
         <activity
             android:name=".activity.SettingActivity"
             android:label="设置"

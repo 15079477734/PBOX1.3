@@ -56,7 +56,6 @@
     </style>
 
 
-
     <style name="imagebutton_one">
         <item name="android:layout_height">fill_parent</item>
         <item name="android:layout_weight">1</item>
@@ -137,6 +136,7 @@
         <!--模糊-->
     </style>
 
+    <!--GoogleDateTimePicker-->
 
     <style name="time_label">
         <item name="android:textSize">@dimen/time_label_size</item>
@@ -149,5 +149,8 @@
         <item name="android:textColor">@color/ampm_text_color</item>
         <item name="android:textStyle">bold</item>
     </style>
-    <style name="day_of_week_label_condensed" />
+
+    <!--GoogleDateTimePicker-->
+
+
 </resources>

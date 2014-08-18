@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +17,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.library.googledatetimepicker.date.DatePickerDialog;
+import com.library.googledatetimepicker.time.RadialPickerLayout;
+import com.library.googledatetimepicker.time.TimePickerDialog;
 import com.planboxone.R;
 import com.planboxone.util.DatabaseManage;
 import com.planboxone.util.GetDate;
@@ -24,9 +27,12 @@ import java.util.Calendar;
 import java.util.Map;
 
 import static com.planboxone.util.Format.pad;
+import static com.planboxone.util.Format.padAP;
+import static com.planboxone.util.Format.padHour;
 import static com.planboxone.util.GetDate.getWeek;
 
 public class MyWritePlanActivity extends BaseActivity {
+    private final static String TAG = "WritePlanActivity";
 
     private RelativeLayout mDateLayout;
     private RelativeLayout mTimeLayout;
@@ -53,6 +59,8 @@ public class MyWritePlanActivity extends BaseActivity {
 
     private ContentValues mDataValues;
     private final Calendar mCalendar = Calendar.getInstance();
+    private int hourOfDay = mCalendar.get(Calendar.HOUR_OF_DAY);
+    private int minute = mCalendar.get(Calendar.MINUTE);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,6 +74,7 @@ public class MyWritePlanActivity extends BaseActivity {
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
+        Log.e(TAG, mDataValues.toString());
         if (saveData())
             return super.onKeyDown(keyCode, event);
         else return false;
@@ -88,9 +97,10 @@ public class MyWritePlanActivity extends BaseActivity {
     }
 
     private void initWrite() {
+        mDbName = "AP";
         mTitle = "";
         mDate = GetDate.getDate();
-        mTime = "";
+        mTime = padHour(hourOfDay) + ":" + pad(minute) + " " + padAP(hourOfDay);
         mCategory = "A计划";
         mTop = "0";
         mNote = "";
@@ -107,6 +117,7 @@ public class MyWritePlanActivity extends BaseActivity {
         mCategory = map.get("category");
         mTop = map.get("top");
         mNote = map.get("note");
+        mDbName = dbName;
     }
 
     private void findView() {
@@ -174,7 +185,7 @@ public class MyWritePlanActivity extends BaseActivity {
 
                 String date = pad(year) + "-" + pad(month + 1) + "-" + pad(day) + " " + getWeek(year, month, day);
                 mDateText.setText(date);
-                mDataValues.put(date, date);
+                mDataValues.put("date", date);
             }
 
         }, mCalendar.get(Calendar.YEAR), mCalendar.get(Calendar.MONTH), mCalendar.get(Calendar.DAY_OF_MONTH));
@@ -187,9 +198,24 @@ public class MyWritePlanActivity extends BaseActivity {
     }
 
     private class TimeChangeListener implements View.OnClickListener {
+
+
+        final TimePickerDialog timePickerDialog = TimePickerDialog.newInstance(new TimePickerDialog.OnTimeSetListener() {
+            @Override
+            public void onTimeSet(RadialPickerLayout view, int hourOfDay,
+                                  int minute) {
+                Object c = padAP(hourOfDay);
+                mTime = padHour(hourOfDay) + ":" + pad(minute) + " " + c;
+                mTimeText.setText(mTime);
+                mDataValues.put("time", mTime);
+                mTimeText.setTextColor(getResources().getColor(android.R.color.holo_blue_light));
+            }
+        }, mCalendar.get(Calendar.HOUR_OF_DAY), mCalendar.get(Calendar.MINUTE), false);
+        private String tag = "";
+
         @Override
         public void onClick(View view) {
-
+            timePickerDialog.show(getFragmentManager(), tag);
         }
     }
 

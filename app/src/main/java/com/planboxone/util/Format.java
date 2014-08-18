@@ -26,4 +26,26 @@ public class Format {
             return "0" + String.valueOf(c);
     }
 
+    public static String padHour(int c) {
+        if (c == 12)
+            return String.valueOf(c);
+        if (c == 00)
+            return String.valueOf(c + 12);
+        if (c > 12)
+            return String.valueOf(c - 12);
+        else
+            return String.valueOf(c);
+    }
+
+    public static String padAP(int c) {
+        if (c == 12)
+            return " PM";
+        if (c == 00)
+            return " AM";
+        if (c > 12)
+            return " PM";
+        else
+            return " AM";
+    }
+
 }
