@@ -4,7 +4,7 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
 
-    <!--datapicker-->
+    <!--GoogleDateTimePicker-->
     <item name="circle_radius_multiplier" format="float" type="string">0.82</item>
     <item name="circle_radius_multiplier_24HourMode" format="float" type="string">0.85</item>
     <item name="selection_radius_multiplier" format="float" type="string">0.16</item>
@@ -47,6 +47,7 @@
     <dimen name="day_number_size">16sp</dimen>
     <dimen name="year_label_height">64dp</dimen>
     <dimen name="year_label_text_size">22dp</dimen>
+    <!--GoogleDateTimePicker-->
 
 
 </resources>

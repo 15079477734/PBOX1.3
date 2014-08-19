@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioButton;
@@ -41,6 +42,8 @@ public class MyWritePlanActivity extends BaseActivity {
     private EditText mTitleEdit;
     private CheckBox mTopCheckBox;
     private EditText mNoteEdit;
+    private Button mConfirmBtn;
+    private Button mCancelBtn;
 
     private TextView mDateText;
     private TextView mTimeText;
@@ -72,14 +75,6 @@ public class MyWritePlanActivity extends BaseActivity {
         bindEvents();
     }
 
-    @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-        Log.e(TAG, mDataValues.toString());
-        if (saveData())
-            return super.onKeyDown(keyCode, event);
-
-        else return false;
-    }
 
     private void initData() {
         mDataValues = new ContentValues();
@@ -128,6 +123,8 @@ public class MyWritePlanActivity extends BaseActivity {
         mTimeText = (TextView) findViewById(R.id.writer_time_text);
         mCategorText = (TextView) findViewById(R.id.writer_category_text);
         mTopCheckBox = (CheckBox) findViewById(R.id.writer_top_chk);
+        mConfirmBtn=(Button)findViewById(R.id.writer_confirm_btn);
+        mCancelBtn=(Button)findViewById(R.id.writer_cancel_btn);
 
         mDateLayout = (RelativeLayout) findViewById(R.id.writer_date_rv);
         mTimeLayout = (RelativeLayout) findViewById(R.id.writer_time_rv);
@@ -151,6 +148,13 @@ public class MyWritePlanActivity extends BaseActivity {
         mDateLayout.setOnClickListener(new DateChangeListener());
         mTimeLayout.setOnClickListener(new TimeChangeListener());
         mCategoryLayout.setOnClickListener(new CategoryChangeListenr());
+        mConfirmBtn.setOnClickListener(new ConfirmListenr());
+        mCancelBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
     }
 
     private boolean saveData() {
@@ -174,9 +178,17 @@ public class MyWritePlanActivity extends BaseActivity {
                 mDatabaseManage.updateData(mDataValues, "_id=?", new String[]{mID});
                 Toast.makeText(MyWritePlanActivity.this, "修改成功", Toast.LENGTH_SHORT).show();
             }
+            finish();
             return true;
         }
 
+    }
+
+    private class ConfirmListenr implements View.OnClickListener{
+        @Override
+        public void onClick(View view) {
+            saveData();
+        }
     }
 
     private class DateChangeListener implements View.OnClickListener {
@@ -187,6 +199,7 @@ public class MyWritePlanActivity extends BaseActivity {
                 String date = pad(year) + "-" + pad(month + 1) + "-" + pad(day) + " " + getWeek(year, month, day);
                 mDateText.setText(date);
                 mDataValues.put("date", date);
+                mDateText.setTextColor(getResources().getColor(android.R.color.holo_blue_light));
             }
 
         }, mCalendar.get(Calendar.YEAR), mCalendar.get(Calendar.MONTH), mCalendar.get(Calendar.DAY_OF_MONTH));

@@ -12,7 +12,6 @@
             android:name=".activity.MainActivity"
             android:label="微计划"
             android:theme="@style/AppTheme" />
-
         <activity
             android:name=".activity.SettingActivity"
             android:label="设置"
@@ -41,6 +40,10 @@
         <activity
             android:name=".activity.MyWritePlanActivity"
             android:label="@string/title_activity_my_write_plan" >
+        </activity>
+        <activity
+            android:name=".activity.EventDetailActivity"
+            android:label="@string/title_activity_event_detail" >
         </activity>
     </application>
 

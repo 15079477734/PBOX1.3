@@ -5,8 +5,9 @@
     <string name="action_plus">功能</string>
     <string name="action_collection">收藏</string>
     <string name="action_settings">设置</string>
+    <string name="hello_world">Hello world!</string>
 
-    <!-- GoogleDateTimePicker-->
+    <!-- GoogleDateTimePicker -->
 
     <string name="done_label">Done</string>
     <string name="hour_picker_description">Hours circular slider</string>
@@ -25,9 +26,10 @@
     <string name="sans_serif">sans-serif</string>
     <string name="day_of_week_label_typeface">sans-serif</string>
     <string name="title_activity_date_time_pick">DateTimePickActivity</string>
-    <string name="hello_world">Hello world!</string>
     <string name="title_activity_my_write_plan">MyWritePlanActivity</string>
 
-    <!-- GoogleDateTimePicker-->
+    <!-- GoogleDateTimePicker -->
+
+    <string name="title_activity_event_detail">EventDetailActivity</string>
 
 </resources>

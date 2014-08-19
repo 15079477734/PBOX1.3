@@ -115,9 +115,9 @@ public class MainActivity extends FragmentActivity {
             return true;
         }
 
-        if (id == R.id.action_collection
+        if (id == R.id.action_settings
                 ) {
-            this.startActivity(new Intent(this,DateTimePickActivity.class));
+            this.startActivity(new Intent(this,SettingActivity.class));
             overridePendingTransition(R.anim.slide_in_right, R.anim.zoin);
             return true;
         }
